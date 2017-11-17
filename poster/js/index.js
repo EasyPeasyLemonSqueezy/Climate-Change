@@ -63,7 +63,6 @@ let fucked = c3.generate({
 
 let awesome_countries = [
     'Germany',
-    'Italy',
     'Malta',
     'Belgium',
     'Denmark',
@@ -78,7 +77,6 @@ let fucked_countries = [
     'Latvia',
     'New Zealand',
     'Russian Federation',
-    'France',
     'Norway'
 ]
 
