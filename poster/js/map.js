@@ -1,10 +1,7 @@
-$.getJSON("data/codes.json", (codes) => {
-$.getJSON("data/countries.json", (countries) => {
-
-
 let currentYear = 1990;
 
-function drawMap() {
+
+function drawMap(countries, codes) {
     var dataset = {};
     
     var onlyValues = [];
@@ -49,14 +46,14 @@ function drawMap() {
     });
 }
 
-function startMap() {
+function startMap(countries, codes) {
     timer = setInterval(() => {
         document.getElementById('map-year')
                 .getElementsByTagName('h3')[0]
                 .innerText
             = `Year: ${currentYear}`
 
-        drawMap();
+        drawMap(countries, codes);
 
         ++currentYear;
 
@@ -67,9 +64,10 @@ function startMap() {
     }, 1000);
 }
 
-drawMap();
-startMap();
 
-
-});
+$.getJSON("data/codes.json", (codes) => {
+    $.getJSON("data/countries.json", (countries) => {
+        drawMap(countries, codes);
+        startMap(countries, codes);
+    });
 });
