@@ -62,15 +62,24 @@ let fucked = c3.generate({
 
 
 let awesome_countries = [
-    'Italy',
     'Germany',
-    'Spain',
-    'Malta'
+    'Italy',
+    'Malta',
+    'Belgium',
+    'Denmark',
+    'European Union',
+    'Netherlands',
+    'Spain'
 ]
 
 let fucked_countries = [
+    'Canada',
+    'Kazakhstan2',
+    'Latvia',
+    'New Zealand',
     'Russian Federation',
-    'Canada'
+    'France',
+    'Norway'
 ]
 
 function getData(country) {
