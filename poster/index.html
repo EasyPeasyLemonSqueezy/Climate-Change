@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>We're all gonna die</title>
+    <title>emissions</title>
     <meta charset="UTF-8">
 
     <script
@@ -30,6 +30,15 @@
             text-align: center;
         }
 
+        .title {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .text {
+            text-align: center;
+        }
+
         .chart .c3-line-CO₂e {
             stroke-width: 5px;
         }
@@ -44,13 +53,15 @@
 <body>
     <div class="container">
     	<div class="row justify-content-center">
-    		<H2>WE'RE ALL GONNA DIE</H2>
+    		<H2>CO₂ emissions</H2>
     	</div>
         <div class="row justify-content-center">
             <div class="col-6" id="awesome-country">
+                <div class="title">Growth of renewables</div>
                 <h3>Italy</h3>
             </div>
             <div class="col-6" id="fucked-country">
+                <div class="title">Stagnation of renewables</div>
                 <h3>Russian Federation</h3>
             </div>
         </div>
@@ -58,6 +69,7 @@
             <div class="col-6 chart"><div id="awesome"></div></div>
             <div class="col-6 chart"><div id="fucked"></div></div>
         </div>
+        <div class="text">Now the problem of air pollution is topical. Increase the use of renewable energy sources to reduce emissions to the atmosphere.</div>
     </div>
 
     <script type="text/javascript" src="js/index.js"></script>
