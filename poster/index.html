@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>We're all gonna die</title>
+    <meta charset="UTF-8">
 
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -18,13 +19,23 @@
     <script type="text/javascript" src="js/c3.min.js"></script>
 
     <style type="text/css">
-        .chart {
-            text-align: center;
-        }
-
         h2 {
             font-size: 48px;
         }
+
+        h3 {
+            text-align: center;
+        }
+
+        .chart .c3-line-CO₂e {
+            stroke-width: 5px;
+        }
+        .chart .c3-line-CO₂e {
+            stroke-width: 5px;
+        }
+        .c3-chart-lines .c3-circles .c3-circle {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -33,15 +44,16 @@
     		<H2>WE'RE ALL GONNA DIE</H2>
     	</div>
         <div class="row justify-content-center">
-            <div class="col-auto chart"><div id="chart-1"></div></div>
-            <div class="col-auto chart"><div id="chart-2"></div></div>
+            <div class="col-6" id="awesome-country">
+                <h3>Italy</h3>
+            </div>
+            <div class="col-6" id="fucked-country">
+                <h3>Russian Federation</h3>
+            </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-12 chart"><div id="emissions"></div></div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto chart"><div id="chart-3"></div></div>
-            <div class="col-auto chart"><div id="chart-4"></div></div>
+            <div class="col-6 chart"><div id="awesome"></div></div>
+            <div class="col-6 chart"><div id="fucked"></div></div>
         </div>
     </div>
 

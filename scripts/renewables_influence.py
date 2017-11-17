@@ -95,5 +95,7 @@ if __name__ == '__main__':
 
 
     for r in res:
+        jres = {v[0]: v[1:] for v in [['years'] + list(range(1990, 2016))] + r[1]}
+
         with io.open(f'renewable_results/{r[0]}.json', 'w', encoding='utf8') as f:
-            json.dump([['years'] + list(range(1990, 2016))] + r[1], f, ensure_ascii=False)
+            json.dump(jres, f, ensure_ascii=False)

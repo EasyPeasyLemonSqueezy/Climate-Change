@@ -3,56 +3,105 @@ let size = {
     width: 400
 }
 
-let data = [
-    ['data1', 30, 200, 100, 400, 150, 250],
-    ['data2', 50, 20, 10, 40, 15, 25]
+let types = {
+    'CO\u2082e'         : 'spline',
+    'Biogases'          : 'area-spline',
+    'Liquid biofuels'   : 'area-spline',
+    'Geothermal'        : 'area-spline',
+    'Solar thermal'     : 'area-spline',
+    'Hydro'             : 'area-spline',
+    'Solar PV'          : 'area-spline',
+    'Tide, wave, ocean' : 'area-spline',
+    'Wind'              : 'area-spline'
+}
+
+let axes = {
+    'CO\u2082e'         : 'y2',
+    'Biogases'          : 'y',
+    'Liquid biofuels'   : 'y',
+    'Geothermal'        : 'y',
+    'Solar thermal'     : 'y',
+    'Hydro'             : 'y',
+    'Solar PV'          : 'y',
+    'Tide, wave, ocean' : 'y',
+    'Wind'              : 'y'
+}
+
+let axis = {
+    x: { label: 'year' },
+    y: { label: 'GWh' },
+    y2: {
+        label: 'Mt',
+        show: true
+    }
+}
+
+let awesome = c3.generate({
+    bindto: '#awesome',
+    data: {
+        x: 'years',
+        url: '../data/renewable_results/Italy.json',
+        mimeType: 'json',
+        types: types,
+        axes: axes,
+    },
+    axis: axis
+});
+
+let fucked = c3.generate({
+    bindto: '#fucked',
+    data: {
+        x: 'years',
+        url: '../data/renewable_results/Russian Federation.json',
+        mimeType: 'json',
+        types: types,
+        axes: axes,
+    },
+    axis: axis
+});
+
+
+let awesome_countries = [
+    'Italy',
+    'Germany',
+    'Spain',
+    'Malta'
 ]
 
-var chart_1 = c3.generate({
-    bindto: '#chart-1',
-    data: {
-        columns: [
-            ['data1', 300, 350, 300, 0, 0, 120],
-            ['data2', 130, 100, 140, 200, 150, 50]
-        ],
-        types: {
-            data1: 'area-spline',
-            data2: 'area-spline'
-        },
-        groups: [['data1', 'data2']]
-    },
-    size: {
-        height: 240,
-        width: 400
+let fucked_countries = [
+    'Russian Federation',
+    'Canada'
+]
+
+function getData(country) {
+    return {
+        url: `../data/renewable_results/${country}.json`,
+        x: 'years',
+        mimeType: 'json',
+        types: types,
+        axes: axes,
+        unload: true
     }
-});
+}
 
-var chart_2 = c3.generate({
-    bindto: '#chart-2',
-    data: { columns: data },
-    size: size
-});
+let currentIndex = 0;
 
-var chart_3 = c3.generate({
-    bindto: '#chart-3',
-    data: { columns: data },
-    size: size
-});
+function startDemo() {
+    timer = setInterval(() => {
+        ++currentIndex;
 
-var chart_4 = c3.generate({
-    bindto: '#chart-4',
-    data: { columns: data },
-    size: size
-});
+        awesome.load(getData(awesome_countries[currentIndex % awesome_countries.length]));
+        fucked.load(getData(fucked_countries[currentIndex % fucked_countries.length]))
 
-var emissions = c3.generate({
-    bindto: '#emissions',
-    data: {
-        x: 'x',
-        url: 'https://gist.githubusercontent.com/Learko/902368969add285b42bdecd0e83a1716/raw/03ab99c8f52c65c52b690256ba1bfbff79861dfb/co2e.json',
-        mimeType: 'json'
-    },
-    size: {
-        height: 700
-    }
-});
+        let awesome_name = document.getElementById('awesome-country')
+                                   .getElementsByTagName('h3')[0];
+
+        let fucked_name  = document.getElementById('fucked-country')
+                                   .getElementsByTagName('h3')[0];
+
+        awesome_name.innerText = awesome_countries[currentIndex % awesome_countries.length];
+        fucked_name.innerText  = fucked_countries[currentIndex % fucked_countries.length];
+    }, 5000);
+}
+
+startDemo();
