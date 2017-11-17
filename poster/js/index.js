@@ -40,7 +40,7 @@ let awesome = c3.generate({
     bindto: '#awesome',
     data: {
         x: 'years',
-        url: '../data/renewable_results/Italy.json',
+        url: '../data/renewable_results/Germany.json',
         mimeType: 'json',
         types: types,
         axes: axes,
@@ -52,7 +52,7 @@ let fucked = c3.generate({
     bindto: '#fucked',
     data: {
         x: 'years',
-        url: '../data/renewable_results/Russian Federation.json',
+        url: '../data/renewable_results/Canada.json',
         mimeType: 'json',
         types: types,
         axes: axes,
@@ -63,6 +63,7 @@ let fucked = c3.generate({
 
 let awesome_countries = [
     'Germany',
+    'Italy',
     'Malta',
     'Belgium',
     'Denmark',
@@ -77,6 +78,7 @@ let fucked_countries = [
     'Latvia',
     'New Zealand',
     'Russian Federation',
+    'France',
     'Norway'
 ]
 
