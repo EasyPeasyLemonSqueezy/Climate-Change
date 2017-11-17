@@ -96,17 +96,21 @@ function getData(country) {
 let currentIndex = 0;
 
 function startDemo() {
+    let awesome_name = document.getElementById('awesome-country')
+                               .getElementsByTagName('h3')[0];
+
+    let fucked_name  = document.getElementById('fucked-country')
+                               .getElementsByTagName('h3')[0];
+
+    awesome_name.innerText = awesome_countries[0];
+    fucked_name.innerText  = fucked_countries[0];
+    
+
     timer = setInterval(() => {
         ++currentIndex;
 
         awesome.load(getData(awesome_countries[currentIndex % awesome_countries.length]));
         fucked.load(getData(fucked_countries[currentIndex % fucked_countries.length]))
-
-        let awesome_name = document.getElementById('awesome-country')
-                                   .getElementsByTagName('h3')[0];
-
-        let fucked_name  = document.getElementById('fucked-country')
-                                   .getElementsByTagName('h3')[0];
 
         awesome_name.innerText = awesome_countries[currentIndex % awesome_countries.length];
         fucked_name.innerText  = fucked_countries[currentIndex % fucked_countries.length];
