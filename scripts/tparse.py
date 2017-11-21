@@ -9,33 +9,30 @@ from requests import get
 from base64 import b64decode
 from bs4 import BeautifulSoup
 
+from collections import Counter
 
 
-path = 'bp-statistical-review-of-world-energy-2017-underpinning-data.xlsx'
-url = 'http://www.iea.org/statistics/statisticssearch/report/?country=%s&product=renewablesandwaste&year=%s'
+renewable_product = 'renewablesandwaste'
+energy_product    = 'electricityandheat'
+url = 'http://www.iea.org/statistics/statisticssearch/report/?country=%s&product=%s&year=%s'
 energy_params = ('Biogases', 'Liquid biofuels', 'Geothermal', 'Solar thermal', 'Hydro', 'Solar PV', 'Tide, wave, ocean', 'Wind')
 
-def parse_ee(xs):
-    values = {}
+def parse_energy(country):
+    value = int(b64decode(
+        BeautifulSoup(get(url % (country, energy_product, 2015)).text, 'html.parser')
+            .find('table')
+            .find_all('tr')[14]
+            .find_all('td')[0]
+            .text
+        ))
 
-    with xlrd.open_workbook(xs, on_demand=True) as workbook:
-        worksheet = workbook.sheet_by_name('Electricity Generation ')
-
-        for c in range(3, 86):
-            country = worksheet.cell_value(c, 0)
-
-            if country:
-                value = float(worksheet.cell_value(c, 31))
-
-                values[country] = [['other', value * 876]]
-
-    return values
+    return value
 
 
 def parse_renewable(country):
     values = list(map(
-        lambda cell: int(b64decode(cell.find(text=True))),
-        BeautifulSoup(get(url % (country, 2015)).text, 'html.parser')
+        lambda cell: int(b64decode(cell.text)),
+        BeautifulSoup(get(url % (country, renewable_product, 2015)).text, 'html.parser')
             .find('table')
             .find_all('tr')[1]
             .find_all('td')[3:]
@@ -44,30 +41,27 @@ def parse_renewable(country):
     return values
 
 
+def parse(country, country_code):
+    renew = parse_renewable(country_code)
+    other = parse_energy(country_code) - sum(renew)
+
+    return country, { k: v for k, v in zip(('other',) + energy_params, [other] + renew) }
+
+
+
 if __name__ == '__main__':
     if sys.version_info < (3, 6):
         sys.exit('Python 3.6 or later is required.\n')
 
-    energy = parse_ee(path)
-    energy['United States'] = [[ 'other', energy['Other S. & Cent. America'][0][1] + energy['Total S. & Cent. America'][0][1] ]]
-    energy['Malta'] = [[ 'other', 1303 * 876 ]]
-    energy['Kazakhstan2'] = energy['Kazakhstan']
-
     with open('countries.json') as f:
         countries = json.load(f)
 
-    for k, v in countries.items():
-        if k in energy:
-            renewables = parse_renewable(v)
-            energy[k][0][1] -= sum(renewables)
+    with Pool(processes=20) as pool:
+        energy = pool.starmap(parse, countries.items())
 
-            for name, value in zip(energy_params, renewables):
-                energy[k].append([name, value])
-        else:
-            print(f'Can\'t find {k}')
-
-    energy = { k: v for k, v in energy.items() if len(v) > 1 }
+    data = { c: [[k, v] for k, v in e.items()] for c, e in energy }
+    data['Kazakhstan'] = data.pop('Kazakhstan2')
 
 
     with open('electricity_generation.json', 'w') as f:
-        json.dump(energy, f)
+        json.dump(data, f)
