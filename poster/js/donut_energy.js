@@ -6,7 +6,18 @@ function drawDonut(data, countries) {
         bindto: '#donut-container',
         data: {
             columns: data[countries[++currentCountry]],
-            type : 'donut'
+            type : 'donut',
+            colors: {
+                'Biogases'          : "#ff7f0e",
+                'Geothermal'        : "#d62728",
+                'Hydro'             : "#8c564b",
+                'Liquid biofuels'   : "#2ca02c",
+                'Solar PV'          : "#e377c2",
+                'Solar thermal'     : "#9467bd",
+                'Tide, wave, ocean' : "#7f7f7f",
+                'Wind'              : "#bcbd22",
+                'other'             : "#1f77b4"
+            }
         },
         donut: {
             title: "Energy"
@@ -38,7 +49,7 @@ function drawDonut(data, countries) {
 
 
 
-$.getJSON("../data/electricity_generation.json", (data) => {
+$.getJSON("/data/electricity_generation.json", (data) => {
     console.log(data)
     let countries = Object.keys(data);
     drawDonut(data, countries);
