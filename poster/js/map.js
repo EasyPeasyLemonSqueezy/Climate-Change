@@ -12,7 +12,7 @@ function drawMap(countries, codes) {
     var minValue = Math.min.apply(null, onlyValues),
         maxValue = Math.max.apply(null, onlyValues);
 
-    var paletteScale = d3.scale.pow()
+    var paletteScale = d3.scale.log()
         .domain([minValue,maxValue])
         .range(["#d3d3d3", "#1F1F1F"]); 
 

@@ -50,7 +50,6 @@ function drawDonut(data, countries) {
 
 
 $.getJSON("/data/electricity_generation.json", (data) => {
-    console.log(data)
     let countries = Object.keys(data);
     drawDonut(data, countries);
 });
