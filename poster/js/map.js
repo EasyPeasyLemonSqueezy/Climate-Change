@@ -6,19 +6,19 @@ function drawMap(countries, codes) {
     
     var onlyValues = [];
     for (var key in countries) {
-        onlyValues.push(countries[key][currentYear]);
+        onlyValues.push(countries[key][currentYear - 1990]);
     }
 
     var minValue = Math.min.apply(null, onlyValues),
         maxValue = Math.max.apply(null, onlyValues);
 
-    var paletteScale = d3.scale.linear()
+    var paletteScale = d3.scale.pow()
         .domain([minValue,maxValue])
-        .range(["#ff5c58","#ff2600"]); 
+        .range(["#d3d3d3", "#1F1F1F"]); 
 
     for (var key in countries){
-        var value = countries[key][currentYear];
-        dataset[codes[key]] = { numberOfThings: value, fillColor: paletteScale(value) };
+        var value = countries[key][currentYear - 1990];
+        dataset[codes[key]] = { numberOfThings: Math.round(value / 1000), fillColor: paletteScale(value) };
     }
 
     document.getElementById("map-container").innerHTML = "";
@@ -39,13 +39,13 @@ function drawMap(countries, codes) {
                if (!data) { return ; }
                return ['<div class="hoverinfo">',
                    '<strong>', geo.properties.name, '</strong>',
-                   '<br>CO2(Mkg): <strong>', data.numberOfThings, '</strong>',
+                   '<br>CO2(Gkg): <strong>', data.numberOfThings, '</strong>',
                    '</div>'].join('');
            }
         },
         setProjection: function (element) {
             let projection = d3.geo.mercator()
-                .scale(40)
+                .scale(80)
                 .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
 
             let path = d3.geo.path().projection(projection);
@@ -69,12 +69,12 @@ function startMap(countries, codes) {
             currentYear = 1990;
         }
 
-    }, 1000000);
+    }, 1000);
 }
 
 
-$.getJSON("data/codes.json", (codes) => {
-    $.getJSON("data/countries.json", (countries) => {
+$.getJSON("/data/country_code.json", (codes) => {
+    $.getJSON("/data/co2e.min.json", (countries) => {
         drawMap(countries, codes);
         startMap(countries, codes);
     });
