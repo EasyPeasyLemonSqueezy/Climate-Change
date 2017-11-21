@@ -54,8 +54,9 @@
             width: 200px;
             justify-content: center;
         }
-        #map-container {
-            margin: 50px;
+
+        #map-container svg {
+            overflow: overlay !important;
         }
     </style>
 </head>
@@ -65,8 +66,8 @@
             <div class="col-4">
                 <h2>CO₂ emissions</h2>
             </div>
-            <div class="col-8" id="map-wrapper  ">
-                 <div id="map-container" style="position: relative"></div>
+            <div class="col-8" id="map-wrapper">
+                 <div id="map-container"></div>
             </div>
         </div>
 

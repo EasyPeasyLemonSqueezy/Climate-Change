@@ -42,6 +42,14 @@ function drawMap(countries, codes) {
                    '<br>CO2(Mkg): <strong>', data.numberOfThings, '</strong>',
                    '</div>'].join('');
            }
+        },
+        setProjection: function (element) {
+            let projection = d3.geo.mercator()
+                .scale(40)
+                .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+
+            let path = d3.geo.path().projection(projection);
+            return { path: path, projection: projection };
         }
     });
 }
@@ -61,7 +69,7 @@ function startMap(countries, codes) {
             currentYear = 1990;
         }
 
-    }, 1000);
+    }, 1000000);
 }
 
 
