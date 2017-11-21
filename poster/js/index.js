@@ -36,31 +36,6 @@ let axis = {
     }
 }
 
-let awesome = c3.generate({
-    bindto: '#awesome',
-    data: {
-        x: 'years',
-        url: '../data/renewable_results/Germany.json',
-        mimeType: 'json',
-        types: types,
-        axes: axes,
-    },
-    axis: axis
-});
-
-let fucked = c3.generate({
-    bindto: '#fucked',
-    data: {
-        x: 'years',
-        url: '../data/renewable_results/Canada.json',
-        mimeType: 'json',
-        types: types,
-        axes: axes,
-    },
-    axis: axis
-});
-
-
 let awesome_countries = [
     'Germany',
     'Italy',
@@ -74,7 +49,7 @@ let awesome_countries = [
 
 let fucked_countries = [
     'Canada',
-    'Kazakhstan2',
+    'Kazakhstan',
     'Latvia',
     'New Zealand',
     'Russian Federation',
@@ -82,39 +57,66 @@ let fucked_countries = [
     'Norway'
 ]
 
-function getData(country) {
-    return {
-        url: `../data/renewable_results/${country}.json`,
-        x: 'years',
-        mimeType: 'json',
-        types: types,
-        axes: axes,
-        unload: true
-    }
-}
 
-let currentIndex = 0;
+let awesome;
+let fucked;
 
-function startDemo() {
-    let awesome_name = document.getElementById('awesome-country')
-                               .getElementsByTagName('h3')[0];
+let data;
+let awesome_name = document.getElementById('awesome-country')
+                           .getElementsByTagName('h3')[0];
 
-    let fucked_name  = document.getElementById('fucked-country')
-                               .getElementsByTagName('h3')[0];
+let fucked_name  = document.getElementById('fucked-country')
+                           .getElementsByTagName('h3')[0];
+
+
+function flow() {
+    let countryIndex = 0;
+
+    awesome = c3.generate({
+        bindto: '#awesome',
+        data: {
+            x: 'years',
+            columns: data[awesome_countries[countryIndex]],
+            types: types,
+            axes: axes,
+        },
+        axis: axis
+    });
+
+    fucked = c3.generate({
+        bindto: '#fucked',
+        data: {
+            x: 'years',
+            columns: data[fucked_countries[countryIndex]],
+            types: types,
+            axes: axes,
+        },
+        axis: axis
+    });
 
     awesome_name.innerText = awesome_countries[0];
     fucked_name.innerText  = fucked_countries[0];
-    
 
-    timer = setInterval(() => {
-        ++currentIndex;
+    setInterval(() => {
+        let index = countryIndex % awesome_countries.length;
 
-        awesome.load(getData(awesome_countries[currentIndex % awesome_countries.length]));
-        fucked.load(getData(fucked_countries[currentIndex % fucked_countries.length]))
+        awesome.load({
+            columns: data[awesome_countries[index]],
+        });
 
-        awesome_name.innerText = awesome_countries[currentIndex % awesome_countries.length];
-        fucked_name.innerText  = fucked_countries[currentIndex % fucked_countries.length];
-    }, 5000);
+        fucked.load({
+            columns: data[fucked_countries[index]],
+        });
+
+        awesome_name.innerText = awesome_countries[index];
+        fucked_name.innerText  = fucked_countries[index];
+
+        ++countryIndex;
+    }, 1000);
 }
 
-startDemo();
+
+$.getJSON('/data/renewable_to_emissions.min.json', (res) => {
+    data = res;
+    flow(res);
+})
