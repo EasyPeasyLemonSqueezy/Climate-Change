@@ -80,7 +80,6 @@ function drawMap(countries, codes) {
 function startMap(countries, codes) {
     timer = setInterval(() => {
         document.getElementById('map-year')
-                .getElementsByTagName('h3')[0]
                 .innerText
             = `Year: ${currentYear}`
 

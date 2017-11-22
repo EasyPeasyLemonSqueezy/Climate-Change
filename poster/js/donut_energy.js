@@ -35,8 +35,7 @@ function drawDonut(data, countries) {
             columns: data[newCountry]
         });
 
-        document.getElementById('energy-country')
-                .getElementsByTagName('h3')[0]
+        document.getElementById('country-v')
                 .innerText
             = newCountry;
 
