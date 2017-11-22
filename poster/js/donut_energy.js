@@ -31,7 +31,6 @@ function drawDonut(data, countries) {
     setInterval(() => {
         let newCountry = countries[(++currentCountry) % countries.length];
 
-        chart.unload();
         chart.load({
             columns: data[newCountry]
         });
