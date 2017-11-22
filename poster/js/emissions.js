@@ -98,7 +98,7 @@ function flow() {
     fucked_name.innerText  = fucked_countries[0];
 
     setInterval(() => {
-        let index = countryIndex % awesome_countries.length;
+        let index = countryIndex % fucked_countries.length;
 
         awesome.load({
             columns: data[awesome_countries[index]],

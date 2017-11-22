@@ -58,35 +58,40 @@
 
         #map-container svg {
             overflow: overlay !important;
-            height: 450px;
+            height: 400px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row justify-content-center">    
-            <div class="col-4">
+        <div class="row">
+            <div class="col-lg-6">
                 <h2>CO₂ emissions</h2>
             </div>
-            <div class="col-8" id="map-wrapper">
-                 <div id="map-container"></div>
+            <div class="col-lg-6" id="map-wrapper">
+                <div id="map-container"></div>
             </div>
         </div>
 
-        <div class="row justify-content-left">    
-            <div class="col-3">
-                <div class ="text-title">General infomation</div><br>
-                 Population:<br>
-                 Consumption:<br>
-                 Сonsumption per person:<br>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class ="text-title">General infomation</div><br>
+                         Population:<br>
+                         Consumption:<br>
+                         Сonsumption per person:<br>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class ="text-title">Electricity generating</div> <br>
+                         Capacity:<br>
+                         Renewable:<br>
+                         <br><br><br>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">
-                 <div class ="text-title">Electricity generating</div> <br>
-                 Capacity:<br>
-                 Renewable:<br>
-                 <br><br><br>
-            </div>
-            <div class="col-6">
+
+            <div class="col-lg-6">
                 <div class="row justify-content-center" id="energy-country"><h3></h3></div>
                 <div class="row justify-content-center">
                     <div id="donut-container"></div>
@@ -95,31 +100,27 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-6" id="awesome-country">
+            <div class="col-lg-6" id="awesome-country">
                 <div class="title">Growth of renewables</div>
                 <h3>Italy</h3>
+                <div class="chart" id="awesome"></div>
             </div>
-            <div class="col-6" id="fucked-country">
+            <div class="col-lg-6" id="fucked-country">
                 <div class="title">Stagnation of renewables</div>
                 <h3>Russian Federation</h3>
+                <div class="chart" id="fucked"></div>
             </div>
         </div>
+
+        <div class="row justify-content-center" id="map-year">
+            <h3>Year: 1990</h3>
+        </div>
         <div class="row justify-content-center">
-            <div class="col-6 chart"><div id="awesome"></div></div>
-            <div class="col-6 chart"><div id="fucked"></div></div>
+            <br><br><br>
+            <div class ="text-title">Some shit story</div><br>
         </div>
     </div>
 
-
-    <div class="row justify-content-center" id="map-year">
-        <h3>Year: 1990</h3>
-    </div>
-    <div class="row justify-content-center">
-        <!-- <div id="map-container" style="position: relative; width: 700px; height: 430px;"></div> -->
-        <br><br><br>
-        <div class ="text-title">Some shit story</div><br>
-    </div>
-    
     <script type="text/javascript" src="js/emissions.js"></script>
     <script type="text/javascript" src="js/donut_energy.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
