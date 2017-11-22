@@ -27,24 +27,48 @@ function drawDonut(data, countries) {
         }
     });
 
+    updateDonut(data, countries);
 
     setInterval(() => {
-        let newCountry = countries[(++currentCountry) % countries.length];
+        updateDonut(data, countries);
+    }, 10000);
+}
 
-        chart.load({
-            columns: data[newCountry]
-        });
+let list = {
+    'Biogases'          : document.getElementById('hydro-v'),
+    'Geothermal'        : document.getElementById('wind-v'),
+    'Hydro'             : document.getElementById('biogases-v'),
+    'Liquid biofuels'   : document.getElementById('solarpv-v'),
+    'Solar PV'          : document.getElementById('solarthermal-v'),
+    'Solar thermal'     : document.getElementById('tidewaveocean-v'),
+    'Tide, wave, ocean' : document.getElementById('geothermal-v'),
+    'Wind'              : document.getElementById('biofuels-v'),
+    'other'             : document.getElementById('other-v')
+}
 
-        document.getElementById('country-v')
-                .innerText
-            = newCountry;
+function updateList(data, country) {
+    document.getElementById('country-v')
+            .innerText
+        = country;
 
-        d3.select('#donut-container .c3-chart-arcs-title').node().innerHTML = newCountry;
-
-    }, 1000);
+    for (const [key, value] of data[country]) {
+            list[key].innerText = value;
+    }
 }
 
 
+function updateDonut(data, countries) {
+    let newCountry = countries[(++currentCountry) % countries.length];
+
+
+    updateList(data, newCountry);
+
+    chart.load({
+        columns: data[newCountry]
+    });
+
+    d3.select('#donut-container .c3-chart-arcs-title').node().innerHTML = newCountry;
+}
 
 
 $.getJSON("/data/electricity_generation.json", (data) => {

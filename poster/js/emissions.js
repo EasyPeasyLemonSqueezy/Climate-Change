@@ -112,7 +112,7 @@ function flow() {
         fucked_name.innerText  = fucked_countries[index];
 
         ++countryIndex;
-    }, 1000);
+    }, 10000);
 }
 
 
