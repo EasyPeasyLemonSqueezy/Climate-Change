@@ -31,6 +31,9 @@ function drawDonut(data, countries) {
     setInterval(() => {
         let newCountry = countries[(++currentCountry) % countries.length];
 
+
+        updateList(data[newCountry]);
+
         chart.load({
             columns: data[newCountry]
         });
@@ -44,6 +47,23 @@ function drawDonut(data, countries) {
     }, 1000);
 }
 
+let list = {
+    'Biogases'          : document.getElementById('hydro-v'),
+    'Geothermal'        : document.getElementById('wind-v'),
+    'Hydro'             : document.getElementById('biogases-v'),
+    'Liquid biofuels'   : document.getElementById('solarpv-v'),
+    'Solar PV'          : document.getElementById('solarthermal-v'),
+    'Solar thermal'     : document.getElementById('tidewaveocean-v'),
+    'Tide, wave, ocean' : document.getElementById('geothermal-v'),
+    'Wind'              : document.getElementById('biofuels-v'),
+    'other'             : document.getElementById('other-v')
+}
+
+function updateList(data) {
+    for (const [key, value] of data) {
+            list[key].innerText = value;
+    }
+}
 
 
 
