@@ -27,24 +27,11 @@ function drawDonut(data, countries) {
         }
     });
 
+    updateDonut(data, countries);
 
     setInterval(() => {
-        let newCountry = countries[(++currentCountry) % countries.length];
-
-
-        updateList(data[newCountry]);
-
-        chart.load({
-            columns: data[newCountry]
-        });
-
-        document.getElementById('country-v')
-                .innerText
-            = newCountry;
-
-        d3.select('#donut-container .c3-chart-arcs-title').node().innerHTML = newCountry;
-
-    }, 1000);
+        updateDonut(data, countries);
+    }, 10000);
 }
 
 let list = {
@@ -59,12 +46,29 @@ let list = {
     'other'             : document.getElementById('other-v')
 }
 
-function updateList(data) {
-    for (const [key, value] of data) {
+function updateList(data, country) {
+    document.getElementById('country-v')
+            .innerText
+        = country;
+
+    for (const [key, value] of data[country]) {
             list[key].innerText = value;
     }
 }
 
+
+function updateDonut(data, countries) {
+    let newCountry = countries[(++currentCountry) % countries.length];
+
+
+    updateList(data, newCountry);
+
+    chart.load({
+        columns: data[newCountry]
+    });
+
+    d3.select('#donut-container .c3-chart-arcs-title').node().innerHTML = newCountry;
+}
 
 
 $.getJSON("/data/electricity_generation.json", (data) => {

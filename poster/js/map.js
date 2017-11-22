@@ -77,20 +77,26 @@ function drawMap(countries, codes) {
 }
 
 
+function updateMap(countries, codes) {
+    document.getElementById('map-year')
+            .innerText
+        = `Year: ${currentYear}`
+
+    drawMap(countries, codes);
+
+    ++currentYear;
+
+    if (currentYear > 2015) {
+        currentYear = 1990;
+    }
+}
+
+
 function startMap(countries, codes) {
-    timer = setInterval(() => {
-        document.getElementById('map-year')
-                .innerText
-            = `Year: ${currentYear}`
+    updateMap(countries, codes);
 
-        drawMap(countries, codes);
-
-        ++currentYear;
-
-        if (currentYear > 2015) {
-            currentYear = 1990;
-        }
-
+    setInterval(() => {
+        updateMap(countries, codes)
     }, 1000);
 }
 
