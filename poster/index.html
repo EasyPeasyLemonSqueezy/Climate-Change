@@ -10,11 +10,10 @@
         crossorigin="anonymous">
     </script>
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="css/c3.min.css">
-    <link rel="stylesheet" type="text/css" href="css/github.css">
 
     <script type="text/javascript" src="js/d3.v3.min.js"></script>
     <script type="text/javascript" src="js/c3.min.js"></script>
@@ -22,135 +21,128 @@
     <script type="text/javascript" src="js/topojson.min.js"></script>
     <script type="text/javascript" src="js/datamaps.world.min.js"></script>
 
-    <style type="text/css">
-        * {
-            font-family: 'Montserrat', sans-serif;
-        }
-        h2 {
-            font-size: 35px;
-            padding-top: 100px;
-        }
-
-        h3 {
-            text-align: center;
-        }
-
-        .title {
-            text-align: center;
-            font-size: 30px;
-        }
-
-        .text-title {
-            text-align: left;
-            font-size: 20px;
-        }
-
-        .text {
-            font-size: 12px;
-        }
-
-        .chart .c3-line-CO₂e {
-            stroke-width: 5px;
-        }
-        .chart .c3-line-CO₂e {
-            stroke-width: 5px;
-        }
-        .c3-chart-lines .c3-circles .c3-circle {
-            display: none;
-        }
-
-        #map-wrapper {
-            width: 200px;
-            justify-content: center;
-        }
-
-        #map-container svg {
-            overflow: overlay !important;
-            height: 400px;
-        }
-
-        .map {
-            margin-bottom: -10px;
-        }
-
-        span:before {
-            content: "\00a0 ";
-        }
-        span:after {
-            content: "\00a0 ";
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row"><h2>CARBON DIOXIDE EMISSIONS</h2></div>
-                <div class="row"> <font size = "-1">Before the Industrial Revolution in the 19th century, global average CO2 was about 280 ppm. During the last 800,000 years, CO2 fluctuated between about 180 ppm during ice ages and 280 ppm during interglacial warm periods. Today’s rate of increase is more than 100 times faster than the increase that occurred when the last ice age ended.</font></div>
+        <div class="row justify-content-center map-row">
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12">
+                <div class="row justify-content-left title"><h2>CARBON DIOXIDE EMISSIONS</h2></div>
+                <div class="row justify-content-left remark-wrapper">
+                    <div class="remark-border">
+                        <div class="remark"><p>Before the Industrial Revolution in the 19th century, global average CO<sub>2</sub> was about 280 ppm. During the last 800,000 years, CO<sub>2</sub> fluctuated between about 180 ppm during ice ages and 280 ppm during interglacial warm periods. Today’s rate of increase is more than 100 times faster than the increase that occurred when the last ice age ended.</p></div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6" id="map-wrapper">
+            <div class="col col-lg-4 col-md-6 col-sm-12 col-12 map-col" id="map-wrapper">
                 <div class="row justify-content-center map">
                     <div id="map-container"></div>
                 </div>
-                <div class="row justify-content-end" id="map-year"></div>
+                <div class="row justify-content-end map-year-wrapper">
+                    <div id="map-year"></div>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <font size = "-1">
-                        The greenhouse effect is the process by which radiation from a planet's atmosphere warms the planet's surface to a temperature above what it would be without its atmosphere. The intensity of the downward radiation – will depend on the atmosphere's temperature and on the amount of greenhouse gases that the atmosphere contains.<br>
-                        Earth’s natural greenhouse effect is critical to supporting life. Human activities, primarily the burning of fossil fuels and clearing of forests, have intensified the natural greenhouse effect, causing global warming. <br><br>
-                        </font>
-                    </div>
-                    <div class="col-sm-6">
-                        <font size = "-1">
-                        <div class="row">Energy by source in <span id="country-v"></span> for 2015:</div>
-                        <div class="row">Hydro: <span id="hydro-v"></span></div>
-                        <div class="row">Wind: <span id="wind-v"></span></div>
-                        <div class="row">Biogases: <span id="biogases-v"></span></div>
-                        <div class="row">Solar PV: <span id="solarpv-v"></span></div>
-                        <div class="row">Solar thermal: <span id="solarthermal-v"></span></div>
-                        <div class="row">Tide, wave, ocean: <span id="tidewaveocean-v"></span></div>
-                        <div class="row">Geothermal: <span id="geothermal-v"></span></div>
-                        <div class="row">Liquid biofuels: <span id="biofuels-v"></span></div>
-                        <div class="row">And others, such as coal, that affect CO₂ emissions: <span id="other-v"></span></div>
-                    </font>
-                    </div>
+        <div class="row justify-content-center">
+            <div class="col col-lg-4 col-md-6 col-sm-12 col-12 renewable-is-awesome" style="text-align: right;">
+                <div class="renewable-is-awesome-border">
+                    <h1>SOME TEXT ABOUT WHY RENEWABLES IS AWESOME</h1>
                 </div>
-                <div class="row">For every tonne of coal burned, approximately 2.5 tonnes of CO2e are produced.<br><br></div>
             </div>
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12">[pics about reuse/recycle/etc]</div>
+        </div>
 
-            <div class="col-lg-6">
+        <div class="row justify-content-center">
+            <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
                 <div class="row justify-content-center">
                     <div id="donut-container"></div>
                 </div>
             </div>
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 energy-sources-list">
+                <div class="row">Energy by source in <span id="country-v"></span> for 2015:</div>
+                <div class="row">Hydro: <span id="hydro-v"></span></div>
+                <div class="row">Wind: <span id="wind-v"></span></div>
+                <div class="row">Biogases: <span id="biogases-v"></span></div>
+                <div class="row">Solar PV: <span id="solarpv-v"></span></div>
+                <div class="row">Solar thermal: <span id="solarthermal-v"></span></div>
+                <div class="row">Tide, wave, ocean: <span id="tidewaveocean-v"></span></div>
+                <div class="row">Geothermal: <span id="geothermal-v"></span></div>
+                <div class="row">Liquid biofuels: <span id="biofuels-v"></span></div>
+                <div class="row">And others, such as coal, that affect CO₂ emissions: <span id="other-v"></span></div>
+            </div>
         </div>
 
-        <div class="row">
-            <div class = "text-title">About renewable and why should we invest in it?<br></div>
-            <font size = "-1">
-            Renewable energy is energy that is collected from renewable resources, which are naturally replenished on a human timescale, such as sunlight, wind, rain, tides, waves, and geothermal heat.<br> 
-            Renewable energy resources exist over wide geographical areas, in contrast to other energy sources, which are concentrated in a limited number of countries. Rapid deployment of renewable energy and energy efficiency is resulting in significant energy security, climate change mitigation, and economic benefits.<br><br><br>
-            </font>  
-        </div>
         <div class="row justify-content-center">
-            <div class="col-lg-6" id="awesome-country">
-                <div class="title">Growth of renewable</div>
-                <h3>Italy</h3>
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 renewable-is-awesome" style="text-align: right;">
+                <div class="renewable-is-awesome-border">
+                    <h1>For every tonne of coal burned, approximately 2.5 tonnes of CO<sub>2</sub>e are produced.</h1>
+                </div>
+            </div>
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="row justify-content-around coal">
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                        <img src="pic/coal.svg" width="64" height="64">
+                    </div>
+                    <div class="col-2">
+                        <img src="pic/factory.svg" width="64" height="64">
+                    </div>
+                    <div class="col-2">
+                        <img src="pic/co2.svg" width="64" height="64">
+                    </div>
+                    <div class="col-5"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-lg-4 col-md-6 col-sm-12 col-12">
+                [something related to money]<br>
+                maybe something from here: http://www.greenpeace.org/international/en/campaigns/climate-change/energyrevolution/renewable-energy-myths/
+            </div>
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 renewable-is-awesome">
+                <div class="costs-border">
+                    <h1>Do you think renewable energy is expensive?</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 renewable-is-awesome" style="text-align: right;">
+                <div class="renewable-is-awesome-border">
+                    <h1>Story about countries that invest in renewables.</h1>
+                </div>
+            </div>
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                some remarks
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 country" id="awesome-country">
+                <h3></h3>[thumbs up icon]
                 <div class="chart" id="awesome"></div>
             </div>
-            <div class="col-lg-6" id="fucked-country">
-                <div class="title">Stagnation of renewable</div>
-                <h3>Russian Federation</h3>
+            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 country" id="fucked-country">
+                <h3></h3>[thumbs down icon]
                 <div class="chart" id="fucked"></div>
             </div>
         </div>
-        <div class="row">
-            <div class ="text-title">Conclusion: renewable - fucks, coal - sucks. (but perhaps in other words) </div><br>
+        <div class="row justify-content-center">
+            <div class="col col-lg-9 col-md-10 col-sm-12 col-12">
+                <h1>Conclusion: something</h1>
+                Still not sure?
+                Think...
+                <ul>
+                    <li>RENEWABLE ENERGY IS NICE TO HAVE BUT NOT BIG ENOUGH</li>
+                    <li>RENEWABLE ENERGY CAN’T SUPPLY ELECTRICITY 24/7</li>
+                    <li>ELECTRICITY GRID CAN’T HANDLE RENEWABLE ENERGY</li>
+                    <li>RENEWABLE ENERGY IS BAD FOR THE ENVIRONMENT</li>
+                </ul>
+
+                Check this out: <a href="http://www.greenpeace.org/international/en/campaigns/climate-change/energyrevolution/renewable-energy-myths/">greenpeace</a>
+            </div>
         </div>
     </div>
 

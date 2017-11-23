@@ -27,7 +27,7 @@ function initMap(countries, codes, callback) {
         },
         setProjection: function (element) {
             let projection = d3.geo.mercator()
-                .scale(70)
+                .scale(50)
                 .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
 
             let path = d3.geo.path().projection(projection);

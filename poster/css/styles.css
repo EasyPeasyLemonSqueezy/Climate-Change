@@ -1,0 +1,166 @@
+body {
+    background: #ee9ca7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ee9ca7, #ffdde1);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ee9ca7, #ffdde1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+
+    padding-top: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /*margin: 20px 0 10px;*/
+    padding: 0;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    cursor: text;
+    position: relative;
+}
+
+h1 {
+    font-size: 28px;
+    color: white;
+}
+
+h2 {
+    font-size: 24px;
+    color: white;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    color: #777777;
+    font-size: 14px;
+}
+
+.title h2 {
+    border-bottom: 1px solid white;
+}
+
+.map-row {
+}
+
+.map-col {
+    margin-top: -50px;
+    margin-bottom: -100px;
+}
+
+.remark-wrapper {
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
+
+.remark-border {
+    border-left: 1px solid white;
+}
+
+.remark {
+    margin-top: -15px;
+    margin-bottom: -15px;
+    margin-left: 5px;
+}
+
+.map-year-wrapper {
+    margin-top: -140px;
+    margin-bottom: 140px;
+    margin-right: 15px
+}
+
+#map-year {
+    font-size: 0.7em;
+}
+
+.renewable-is-awesome {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.renewable-is-awesome h1 {
+    text-shadow: 0px 1px 0px #b2a98f,
+             0px 4px 3px rgba(0,0,0,0.15),
+             0px 8px 1px rgba(0,0,0,0.1),
+             0px 11px 10px rgba(0,0,0,0.1);
+}
+
+.renewable-is-awesome a {
+    color: white;
+}
+
+.renewable-is-awesome-border {
+    margin-top: -15px;
+    margin-bottom: -15px;
+
+    border-right: 1px solid white;
+}
+
+.renewable-is-awesome-border h1 {
+    margin-right: 15px;
+}
+
+.energy-sources-list {
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+}
+
+
+.energy-sources-list {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.energy-sources-list .row { 
+    margin: 10px 10px 10px 0px;
+}
+
+.coal img {
+    margin-top: 50px;
+}
+
+.country h3 {
+    text-align: center;
+}
+
+.costs-border {
+    border-left: 1px solid white;
+    padding-left: 15px;
+}
+
+.chart .c3-line-CO₂e {
+    stroke-width: 5px;
+}
+.chart .c3-line-CO₂e {
+    stroke-width: 5px;
+}
+.c3-chart-lines .c3-circles .c3-circle {
+    display: none;
+}
+
+#map-wrapper {
+    width: 200px;
+    justify-content: center;
+}
+
+#map-container svg {
+    overflow: overlay !important;
+    height: 400px;
+}
+
+span:before {
+    content: "\00a0 ";
+}
+span:after {
+    content: "\00a0 ";
+}
