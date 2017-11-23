@@ -130,8 +130,8 @@ h6 {
     margin: 10px 10px 10px 0px;
 }
 
-.coal img {
-    margin-top: 50px;
+.coal-wrapper {
+    align-self: center;
 }
 
 .country h3 {
@@ -158,6 +158,69 @@ h6 {
 }
 .c3-chart-lines .c3-circles .c3-circle {
     display: none;
+}
+
+.conclusion {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.conclusion-border {
+    width: fit-content;
+}
+
+.conclusion-border h1 {
+    border-top: 1px solid white;
+}
+
+.conclusion-border h3 {
+    color: white;
+    margin-top: -25px;
+}
+
+.conclusion-questions h3 {
+    color: white;
+    margin-right: 15px;
+}
+
+.conclusion-questions-border {
+    border-right: 1px solid white;
+}
+
+.conclusion-check {
+    margin-top: 30px;
+}
+
+.conclusion-check h1 {
+    font-size: 6em;
+    margin-left: -20px;
+    margin-top: -80px;
+    margin-bottom: 80px;
+}
+
+.conclusion-check h2 {
+    font-size: 5.5em;
+    margin-left: -20px;
+    margin-top: -45px;
+    margin-bottom: 45px;
+}
+
+.conclusion-check h3 {
+    font-size: 3.5em;
+    margin-left: -20px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.conclusion-check h4 {
+    font-size: 1.85em;
+    margin-top: -70px;
+    margin-left: -20px;
+    cursor: pointer;
+}
+
+.conclusion-check a {
+    color: white;
 }
 
 #map-wrapper {
