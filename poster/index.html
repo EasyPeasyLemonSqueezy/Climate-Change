@@ -60,16 +60,18 @@
                 </div>
             </div>
             <div class="col col-lg-5 col-md-6 col-sm-12 col-12 energy-sources-list">
-                <div class="row">Energy by source in <span id="country-v"></span> for 2015:</div>
-                <div class="row">Hydro: <span id="hydro-v"></span></div>
-                <div class="row">Wind: <span id="wind-v"></span></div>
-                <div class="row">Biogases: <span id="biogases-v"></span></div>
-                <div class="row">Solar PV: <span id="solarpv-v"></span></div>
-                <div class="row">Solar thermal: <span id="solarthermal-v"></span></div>
-                <div class="row">Tide, wave, ocean: <span id="tidewaveocean-v"></span></div>
-                <div class="row">Geothermal: <span id="geothermal-v"></span></div>
-                <div class="row">Liquid biofuels: <span id="biofuels-v"></span></div>
-                <div class="row">And others, such as coal, that affect CO₂ emissions: <span id="other-v"></span></div>
+                <div class="energy-sources-list-border">
+                    <div class="row">Energy by source in <span id="country-v"></span> for 2015:</div>
+                    <div class="row">Hydro: <span id="hydro-v"></span></div>
+                    <div class="row">Wind: <span id="wind-v"></span></div>
+                    <div class="row">Biogases: <span id="biogases-v"></span></div>
+                    <div class="row">Solar PV: <span id="solarpv-v"></span></div>
+                    <div class="row">Solar thermal: <span id="solarthermal-v"></span></div>
+                    <div class="row">Tide, wave, ocean: <span id="tidewaveocean-v"></span></div>
+                    <div class="row">Geothermal: <span id="geothermal-v"></span></div>
+                    <div class="row">Liquid biofuels: <span id="biofuels-v"></span></div>
+                    <div class="row">And others, such as coal, that affect CO₂ emissions: <span id="other-v"></span></div>
+                </div>
             </div>
         </div>
 
@@ -81,17 +83,16 @@
             </div>
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="row justify-content-around coal">
-                    <div class="col-1"></div>
-                    <div class="col-2">
+                    <div class="col col-lg-2 offset-lg-1 col-md-3 offset-md-1 offset-sm-1 col-3 offset-1">
                         <img src="pic/coal.svg" width="64" height="64">
                     </div>
-                    <div class="col-2">
+                    <div class="col col-lg-2 col-md-3 offset-sm-1 col-3">
                         <img src="pic/factory.svg" width="64" height="64">
                     </div>
-                    <div class="col-2">
+                    <div class="col col-lg-2 col-md-3 offset-sm-1 col-3">
                         <img src="pic/co2.svg" width="64" height="64">
                     </div>
-                    <div class="col-5"></div>
+                    <div class="col col-lg-5 col-md-2 col-1"></div>
                 </div>
             </div>
         </div>
@@ -120,15 +121,39 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 country" id="awesome-country">
-                <h3></h3>[thumbs up icon]
-                <div class="chart" id="awesome"></div>
-            </div>
-            <div class="col col-lg-5 col-md-6 col-sm-12 col-12 country" id="fucked-country">
-                <h3></h3>[thumbs down icon]
+            <div class="col col-lg-6 col-md-10 col-sm-12 col-12 country" id="fucked-country">
+                <h3></h3>
                 <div class="chart" id="fucked"></div>
             </div>
+            <div class="col col-lg-4 col-md-10 col-sm-12 col-12 emissions-remark">
+                <div class="row justify-content-center">
+                    <img src="pic/like.svg" width="50px" height="50px">
+                </div>
+                <div class="row justify-content-left remark-wrapper">
+                    <div class="remark-border">
+                        <div class="remark"><p>Some text</p></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-lg-4 col-md-10 col-sm-12 col-12 emissions-remark">
+                <div class="row justify-content-center">
+                    <img src="pic/like.svg" width="50px" height="50px" style="transform: rotate(180deg); transform-origin: 50% 50%;">
+                </div>
+                <div class="row justify-content-end remark-wrapper">
+                    <div class="remark-border-reverse">
+                        <div class="remark"><p>Some text</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-6 col-md-10 col-sm-12 col-12 country" id="awesome-country">
+                <h3></h3>
+                <div class="chart" id="awesome"></div>
+            </div>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col col-lg-9 col-md-10 col-sm-12 col-12">
                 <h1>Conclusion: something</h1>
@@ -146,8 +171,8 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="js/emissions.js"></script>
-    <script type="text/javascript" src="js/donut_energy.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/donut_energy.js"></script>
+    <script type="text/javascript" src="js/emissions.js"></script>
 </body>
 </html>

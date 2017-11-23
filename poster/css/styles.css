@@ -67,6 +67,10 @@ h6 {
     border-left: 1px solid white;
 }
 
+.remark-border-reverse {
+    border-right: 1px solid white;
+}
+
 .remark {
     margin-top: -15px;
     margin-bottom: -15px;
@@ -111,14 +115,15 @@ h6 {
 }
 
 .energy-sources-list {
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-}
-
-
-.energy-sources-list {
     margin-top: 40px;
     margin-bottom: 40px;
+}
+
+.energy-sources-list-border {
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+
+    padding-left: 15px;
 }
 
 .energy-sources-list .row { 
@@ -136,6 +141,13 @@ h6 {
 .costs-border {
     border-left: 1px solid white;
     padding-left: 15px;
+}
+
+.emissions-remark {
+    text-align: center;
+    text-align: -webkit-center;
+
+    margin-top: 50px;
 }
 
 .chart .c3-line-CO₂e {
