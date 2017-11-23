@@ -223,9 +223,11 @@ h6 {
     color: white;
 }
 
+@media screen and (max-width: 767px) {
 .conclusion-check {
     text-align: center;
-} 
+}
+}
 
 #map-wrapper {
     width: 200px;
