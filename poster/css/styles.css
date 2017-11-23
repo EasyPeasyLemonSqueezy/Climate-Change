@@ -176,3 +176,22 @@ span:before {
 span:after {
     content: "\00a0 ";
 }
+
+.shadow {
+    filter: drop-shadow(0px 1px 0px #b2a98f)
+            drop-shadow(0px 3px 3px rgba(0,0,0,0.15))
+            drop-shadow(0px 5px 1px rgba(0,0,0,0.1));
+}
+
+.shadow-rotated {
+    filter: drop-shadow(0px -1px 0px #b2a98f)
+            drop-shadow(0px -3px 3px rgba(0,0,0,0.15))
+            drop-shadow(0px -5px 1px rgba(0,0,0,0.1));
+}
+
+.map-shadow {
+    filter: drop-shadow(1px 1px 0px #b2a98f)
+            drop-shadow(2px 2px 2px rgba(0,0,0,0.15))
+            drop-shadow(4px 4px 1px rgba(0,0,0,0.1))
+            drop-shadow(6px 6px 6px rgba(0,0,0,0.1));
+}
