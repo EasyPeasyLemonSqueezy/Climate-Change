@@ -264,3 +264,9 @@ span:after {
             drop-shadow(4px 4px 1px rgba(0,0,0,0.1))
             drop-shadow(6px 6px 6px rgba(0,0,0,0.1));
 }
+
+
+.renewable-pic {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
