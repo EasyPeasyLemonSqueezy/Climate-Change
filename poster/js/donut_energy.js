@@ -10,13 +10,13 @@ function drawDonut(data, countries) {
             colors: {
                 'Biogases'          : "#ff7f0e",
                 'Geothermal'        : "#d62728",
-                'Hydro'             : "#8c564b",
-                'Liquid biofuels'   : "#2ca02c",
+                'Hydro'             : "#1f77b4",
+                'Liquid biofuels'   : "#8c564b",
                 'Solar PV'          : "#e377c2",
                 'Solar thermal'     : "#9467bd",
-                'Tide, wave, ocean' : "#7f7f7f",
+                'Tide, wave, ocean' : "#2ca02c",
                 'Wind'              : "#bcbd22",
-                'other'             : "#1f77b4"
+                'other'             : "#7f7f7f"
             }
         },
         donut: {
