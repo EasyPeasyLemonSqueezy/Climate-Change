@@ -35,14 +35,14 @@ function drawDonut(data, countries) {
 }
 
 let list = {
-    'Biogases'          : document.getElementById('hydro-v'),
-    'Geothermal'        : document.getElementById('wind-v'),
-    'Hydro'             : document.getElementById('biogases-v'),
-    'Liquid biofuels'   : document.getElementById('solarpv-v'),
-    'Solar PV'          : document.getElementById('solarthermal-v'),
-    'Solar thermal'     : document.getElementById('tidewaveocean-v'),
-    'Tide, wave, ocean' : document.getElementById('geothermal-v'),
-    'Wind'              : document.getElementById('biofuels-v'),
+    'Hydro'             : document.getElementById('hydro-v'),
+    'Wind'              : document.getElementById('wind-v'),
+    'Biogases'          : document.getElementById('biogases-v'),
+    'Solar PV'          : document.getElementById('solarpv-v'),
+    'Solar thermal'     : document.getElementById('solarthermal-v'),
+    'Tide, wave, ocean' : document.getElementById('tidewaveocean-v'),
+    'Geothermal'        : document.getElementById('geothermal-v'),
+    'Liquid biofuels'   : document.getElementById('biofuels-v'),
     'other'             : document.getElementById('other-v')
 }
 
