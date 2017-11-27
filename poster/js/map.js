@@ -1,4 +1,4 @@
-let currentYear = 1990;
+let currentYear = 1994;
 
 let cache = {};
 let map;
@@ -17,11 +17,12 @@ function initMap(countries, codes, callback) {
             highlightFillColor: (geo) => geo['fillColor'] || '#F5F5F5',
             highlightBorderColor: '#B7B7B7',
             popupTemplate: (geo, data) => {
+                console.log(data);
                 if (!data) { return; }
                 
                 return ['<div class="hoverinfo">',
                         '<strong>', geo.properties.name, '</strong>',
-                        '<br>CO2(Gkg): <strong>', data.numberOfThings, '</strong>',
+                        '<br>CO₂e: <strong>', data.numberOfThings / 1000.0, '</strong>', '(kg per gdp)',
                         '</div>'].join('');
             }
         },
@@ -65,7 +66,7 @@ function drawMap(countries, codes) {
             let value = countries[key][currentYear - 1990];
 
             dataset[codes[key]] = {
-                numberOfThings: Math.round(value / 1000),
+                numberOfThings: Math.round(value),
                 fillColor: paletteScale(value)
             };
         }
@@ -87,7 +88,7 @@ function updateMap(countries, codes) {
     ++currentYear;
 
     if (currentYear > 2015) {
-        currentYear = 1990;
+        currentYear = 1994;
     }
 }
 
@@ -102,7 +103,7 @@ function startMap(countries, codes) {
 
 
 $.getJSON("/data/country_code.json", (codes) => {
-    $.getJSON("/data/co2e.min.json", (countries) => {
+    $.getJSON("/data/co2e_per_capita.min.json", (countries) => {
         initMap(countries, codes,
             () => startMap(countries, codes)
         );
