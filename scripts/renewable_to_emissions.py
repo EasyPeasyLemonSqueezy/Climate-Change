@@ -16,25 +16,30 @@ url = 'http://www.iea.org/statistics/statisticssearch/report/?country=%s&product
 energy_params = ('Biogases', 'Liquid biofuels', 'Geothermal', 'Solar thermal', 'Hydro', 'Solar PV', 'Tide, wave, ocean', 'Wind')
 
 awesome = (
-    'Germany',
-    'Italy',
-    'Malta',
     'Belgium',
+    'Cyprus',
+    'Czech Republic',
     'Denmark',
     'European Union',
+    'Germany',
+    'Hungary',
+    'Ireland',
+    'Malta',
     'Netherlands',
-    'Spain'
+    'Spain',
+    'United Kingdom'
 )
+
 
 fucked = (
     'Canada',
+    'Japan',
     'Kazakhstan2',
     'Latvia',
     'New Zealand',
-    'Russian Federation',
-    'France',
-    'Norway'
+    'Russian Federation'
 )
+
 
 
 def parse_energy(country):

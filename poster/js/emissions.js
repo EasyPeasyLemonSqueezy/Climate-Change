@@ -37,25 +37,31 @@ let axis = {
 }
 
 let awesome_countries = [
-    'Germany',
-    'Italy',
-    'Malta',
     'Belgium',
+    'Cyprus',
+    'Czech Republic',
     'Denmark',
     'European Union',
+    'Germany',
+    'Hungary',
+    'Ireland',
+    'Malta',
     'Netherlands',
-    'Spain'
+    'Spain',
+    'United Kingdom'
 ]
+
+
 
 let fucked_countries = [
     'Canada',
+    'Japan',
     'Kazakhstan',
     'Latvia',
     'New Zealand',
-    'Russian Federation',
-    'France',
-    'Norway'
+    'Russian Federation'
 ]
+
 
 
 let awesome;
@@ -69,14 +75,26 @@ let fucked_name  = document.getElementById('fucked-country')
                            .getElementsByTagName('h3')[0];
 
 
+function choice(arr, prev) {
+    let country;
+
+    do {
+        country = arr[Math.floor(arr.length * Math.random())];
+    } while (country == prev);
+
+    return country;
+}
+
+
 function flow() {
-    let countryIndex = 0;
+    let awesome_country = awesome_countries[3];
+    let fucked_country = fucked_countries[4];
 
     awesome = c3.generate({
         bindto: '#awesome',
         data: {
             x: 'years',
-            columns: data[awesome_countries[countryIndex]],
+            columns: data[awesome_country],
             types: types,
             axes: axes,
         },
@@ -87,31 +105,33 @@ function flow() {
         bindto: '#fucked',
         data: {
             x: 'years',
-            columns: data[fucked_countries[countryIndex]],
+            columns: data[fucked_country],
             types: types,
             axes: axes,
         },
         axis: axis
     });
 
-    awesome_name.innerText = awesome_countries[0];
-    fucked_name.innerText  = fucked_countries[0];
+    awesome_name.innerText = awesome_country;
+    fucked_name.innerText  = fucked_country;
+
+    let new_awesome = awesome_country;
+    let new_fucked = fucked_country;
 
     setInterval(() => {
-        let index = countryIndex % fucked_countries.length;
+        new_awesome = choice(awesome_countries, new_awesome);
+        new_fucked  = choice(fucked_countries, new_fucked);
 
         awesome.load({
-            columns: data[awesome_countries[index]],
+            columns: data[new_awesome],
         });
 
         fucked.load({
-            columns: data[fucked_countries[index]],
+            columns: data[new_fucked],
         });
 
-        awesome_name.innerText = awesome_countries[index];
-        fucked_name.innerText  = fucked_countries[index];
-
-        ++countryIndex;
+        awesome_name.innerText = new_awesome;
+        fucked_name.innerText  = new_fucked;
     }, 10000);
 }
 
