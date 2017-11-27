@@ -103,7 +103,7 @@ function startMap(countries, codes) {
 
 
 $.getJSON("/data/country_code.json", (codes) => {
-    $.getJSON("/data/co2e_per_capita.min.json", (countries) => {
+    $.getJSON("/data/co2e_per_gdp.min.json", (countries) => {
         initMap(countries, codes,
             () => startMap(countries, codes)
         );
